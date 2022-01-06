@@ -1,0 +1,16 @@
+<body>
+    <div class="container">
+        <h2>Fotogaléria</h2 >
+        <h5><a routerLink="/gallery" routerLinkActive="active"><kbd><i class="bi bi-arrow-left-short" style="color:white"></i>Príroda</kbd></a></h5>
+    </div>
+    <div class="container gallery-row">
+            <div class="row">
+                <div class="col" gallerize>
+                    <img class="image-detail" [src]="img.url"  *ngFor="let img of imageData">
+                        <div class="col image-detail d-flex flex-column justify-content-center align-items-center" (click)="openDialog()">
+                                <i class="bi bi-plus-square"></i> <h5>Pridať fotky</h5>
+                        </div>
+                </div>    
+            </div>
+    </div>
+</body>

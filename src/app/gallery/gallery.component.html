@@ -1,0 +1,18 @@
+<body>
+    <div class="container">
+            <h2>Fotogaléria</h2>
+            <h5><kbd>Katégorie</kbd></h5>
+    </div>
+    <div class="container gallery-row">
+            <div class="col col-3 item" *ngFor="let gallery of gallery">
+                <a routerLink="/detail" routerLinkActive="router-link-active" >
+                    <img [src]="gallery.url" [alt]="gallery.category" class="item-img">
+                    <div class="top-left"> {{gallery.number}} fotiek </div>
+                    <div class="caption-img"><p>{{gallery.name}}</p></div>
+                </a>
+            </div>
+            <div class="col col-3 item d-flex flex-column justify-content-center align-items-center" (click)="openDialog()">
+                    <i class="bi bi-plus-square"></i> <h5>Pridať categórie</h5>
+            </div>
+    </div>
+</body>
