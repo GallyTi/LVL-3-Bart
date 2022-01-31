@@ -10,8 +10,8 @@ import { GalleryDetailComponent } from './gallery-detail/gallery-detail.componen
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { GalleryModule } from 'ng-gallery';
 import { LightboxModule } from  'ng-gallery/lightbox';
-import {MatDialogModule} from '@angular/material/dialog';
-import { DialogFotkyComponent } from './dialog-fotky/dialog-fotky.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogPhotoComponent } from './dialog-photo/dialog-photo.component';
 import { DialogCategoryComponent } from './dialog-category/dialog-category.component'
 
 @NgModule({
@@ -20,11 +20,11 @@ import { DialogCategoryComponent } from './dialog-category/dialog-category.compo
     GalleryComponent,
     GalleryDetailComponent,
     PagenotfoundComponent,
-    DialogFotkyComponent,
+    DialogPhotoComponent,
     DialogCategoryComponent,
   ],
   entryComponents: [
-    DialogFotkyComponent,
+    DialogPhotoComponent,
     DialogCategoryComponent
   ],
   imports: [

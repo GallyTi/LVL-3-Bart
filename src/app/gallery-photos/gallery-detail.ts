@@ -9,4 +9,6 @@ export const GALLERYDETAIL: InterfaceGallery[]= [
     {id:106, category:'priroda', name:"Príroda", number:8, url:'https://images.pexels.com/photos/10588982/pexels-photo-10588982.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'  },
     {id:107, category:'priroda', name:"Príroda", number:8, url:'https://images.pexels.com/photos/10661402/pexels-photo-10661402.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'  },
     {id:108, category:'priroda', name:"Príroda", number:8, url:'https://images.pexels.com/photos/9926161/pexels-photo-9926161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'  },
+    {id:108, category:'priroda', name:"Príroda", number:8, url:'https://images.pexels.com/photos/9926161/pexels-photo-9926161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'  },
+
 ]

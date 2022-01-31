@@ -1,16 +1,16 @@
 <body>
     <div class="container">
-        <h2>Fotogaléria</h2 >
-        <h5><a routerLink="/gallery" routerLinkActive="active"><kbd><i class="bi bi-arrow-left-short" style="color:white"></i>Príroda</kbd></a></h5>
+        <p class="fotogalery">Fotogaléria</p >
+        <p class="subcategory"><a routerLink="/gallery" routerLinkActive="active"><i class="bi bi-arrow-left-short"></i>Príroda</a></p>
     </div>
     <div class="container gallery-row">
-            <div class="row">
-                <div class="col" gallerize>
-                    <img class="image-detail" [src]="img.url"  *ngFor="let img of imageData">
-                        <div class="col image-detail d-flex flex-column justify-content-center align-items-center" (click)="openDialog()">
-                                <i class="bi bi-plus-square"></i> <h5>Pridať fotky</h5>
-                        </div>
-                </div>    
-            </div>
+        <div class="col col-3 item-detail shadow" *ngFor="let img of imageData">
+            <a routerLink="/detail" routerLinkActive="router-link-active" >
+                <img [src]="img.url" [alt]="img.category" class="item-img">
+            </a>
+        </div>
+        <div class="col col-3 modal-open d-flex flex-column justify-content-center align-items-center shadow" (click)="openDialog()">
+            <i class="bi bi-plus-square"></i> <h5>Pridať fotky</h5>
+        </div>
     </div>
 </body>
