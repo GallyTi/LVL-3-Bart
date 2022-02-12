@@ -2,9 +2,16 @@
     <div class="container">
             <p class="fotogalery">Fotogaléria</p>
             <p class="subcategory">Katégorie</p>
-    </div>
+</div>
     <div class="container gallery-row">
-            <div class="col col-3 item shadow" *ngFor="let gallery of gallery">
+            <div class="col col-3 item shadow" *ngFor="let objects of categoryList; let i=index ">
+                <a routerLink="/detail" routerLinkActive="router-link-active" >
+                    <div class="caption-img">
+                        <div class="caption"><p>{{objects.name}}</p></div>
+                    </div>
+                </a>
+            </div>
+            <!--<div class="col col-3 item shadow" *ngFor="let gallery of gallery">
                 <a routerLink="/detail" routerLinkActive="router-link-active" >
                     <img [src]="gallery.url" [alt]="gallery.category" class="item-img">
                     <div class="top-left"> {{gallery.number}} fotiek </div>
@@ -12,7 +19,7 @@
                         <div class="caption"><p>{{gallery.name}}</p></div>
                     </div>
                 </a>
-            </div>
+            </div>-->
             <div class="col col-3 modal-open d-flex flex-column justify-content-center align-items-center shadow" (click)="openDialog()">
                     <i class="bi bi-plus-square"></i> <h5>Pridať categórie</h5>
             </div>

@@ -6,7 +6,7 @@
     <div class="container gallery-row">
         <div class="col col-3 item-detail shadow" *ngFor="let img of imageData">
             <a routerLink="/detail" routerLinkActive="router-link-active" >
-                <img [src]="img.url" [alt]="img.category" class="item-img">
+                <img [src]="img.url" [alt]="img.category" class="item-img-detail">
             </a>
         </div>
         <div class="col col-3 modal-open d-flex flex-column justify-content-center align-items-center shadow" (click)="openDialog()">

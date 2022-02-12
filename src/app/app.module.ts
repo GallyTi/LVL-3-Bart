@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +14,7 @@ import { LightboxModule } from  'ng-gallery/lightbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogPhotoComponent } from './dialog-photo/dialog-photo.component';
 import { DialogCategoryComponent } from './dialog-category/dialog-category.component'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { DialogCategoryComponent } from './dialog-category/dialog-category.compo
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
