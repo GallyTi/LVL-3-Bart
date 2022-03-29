@@ -1,0 +1,23 @@
+
+    <div class="modal-inside">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left font-24-500">Pridať kategóriu</h4>
+        <button type="button font-16-500" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <fieldset class="scheduler-border">
+                    <legend class="scheduler-border font-14-400">Názov kategórie *</legend>
+                    <input type="text" class="form-control border-none" placeholder="Vložte názov kategórie" [formControl]="name"
+                    minlength="3" maxlength="15" pattern="[a-zA-Z ]*">
+                    <div *ngIf="name.errors?.['required'] &&showError"><b>*Názov je potrebný</b></div>
+                    <div *ngIf="name.errors?.['minlength']"><b>*Názov musí byť minimalne 3 písmena dlhý</b></div>
+                    <div *ngIf="name.errors?.['pattern']"><b>*Názov musí obsahovať písmená bez diakritiky</b></div>
+                    <div *ngIf="name.errors?.['maxLenght']"><b>*Názov musí byť maximálne 20 písmen dlhý</b></div>
+            </fieldset>
+      </div>
+      <div class="modal-footer">
+            <button type="button" class="btn button font-16-500" (click)="saveCategory();" >Nahrať</button>
+      </div>
+    </div>

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+mport { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PagenotfoundComponent } from './pagenotfound.component';
+import { PagenotfoundComponent } from './404';
 
 describe('PagenotfoundComponent', () => {
   let component: PagenotfoundComponent;

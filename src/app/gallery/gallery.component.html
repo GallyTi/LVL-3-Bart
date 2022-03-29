@@ -1,27 +1,51 @@
 <body>
     <div class="container">
-            <p class="fotogalery">Fotogaléria</p>
-            <p class="subcategory">Katégorie</p>
+            <p class="font-36-500 marginFont">Fotogaléria</p>
+            <p class="font-18-400 marginFont">Katégorie</p>
 </div>
     <div class="container gallery-row">
-            <div class="col col-3 item shadow" *ngFor="let objects of categoryList; let i=index ">
-                <a routerLink="/detail" routerLinkActive="router-link-active" >
-                    <div class="caption-img">
-                        <div class="caption"><p>{{objects.name}}</p></div>
+            <div class="col col-3 item shadow" *ngFor="let item of categoriesList"
+            [routerLink]="['',item.path]" routerLinkActive="router-link-active">
+                    <img *ngIf="item.image" [src]="getImageSrc(item.image.fullpath)" [alt]="item.name" class="item-img"  loading="lazy">
+                    <div class="caption-without-img" *ngIf="!item.image" >
+                        <div class="caption font-16-400"><p>{{item.name}}</p></div>
                     </div>
-                </a>
+                    <div class="caption-img " *ngIf="item.image">
+                        <div class="caption font-16-400"><p>{{item.name}}</p></div>
+                    </div>
+                
             </div>
-            <!--<div class="col col-3 item shadow" *ngFor="let gallery of gallery">
-                <a routerLink="/detail" routerLinkActive="router-link-active" >
-                    <img [src]="gallery.url" [alt]="gallery.category" class="item-img">
-                    <div class="top-left"> {{gallery.number}} fotiek </div>
-                    <div class="caption-img">
-                        <div class="caption"><p>{{gallery.name}}</p></div>
-                    </div>
-                </a>
+            <!--<div class="col col-3 item shadow modal-open d-flex flex-column justify-content-center align-items-center" (click)="openModal(template)">
+                <i class="bi bi-plus-square add-square"></i> <p class="caption font-16-400">Pridať categórie</p>
             </div>-->
-            <div class="col col-3 modal-open d-flex flex-column justify-content-center align-items-center shadow" (click)="openDialog()">
-                    <i class="bi bi-plus-square"></i> <h5>Pridať categórie</h5>
-            </div>
+            <div class="col col-3 item shadow modal-open d-flex flex-column justify-content-center align-items-center" (click)="openModal()">
+              <i class="bi bi-plus-square add-square"></i> <p class="caption font-16-400">Pridať categórie</p>
+          </div>
     </div>
 </body>
+<router-outlet></router-outlet>
+
+<!--<ng-template #template>
+  <div class="modal-inside">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left font-24-500">Pridať kategóriu</h4>
+      <button type="button font-16-500" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+          <fieldset class="scheduler-border">
+                  <legend class="scheduler-border font-14-400">Názov kategórie *</legend>
+                  <input type="text" class="form-control border-none" placeholder="Vložte názov kategórie" [formControl]="name"
+                  minlength="3" maxlength="15" pattern="[a-zA-Z ]*">
+                  <div *ngIf="name.errors?.['required'] &&showError"><b>*Názov je potrebný</b></div>
+                  <div *ngIf="name.errors?.['minlength']"><b>*Názov musí byť minimalne 3 písmena dlhý</b></div>
+                  <div *ngIf="name.errors?.['pattern']"><b>*Názov musí obsahovať písmená bez diakritiky</b></div>
+                  <div *ngIf="name.errors?.['maxLenght']"><b>*Názov musí byť maximálne 20 písmen dlhý</b></div>
+          </fieldset>
+    </div>
+    <div class="modal-footer">
+          <button type="button" class="btn button font-16-500" (click)="saveCategory();" >Nahrať</button>
+    </div>
+  </div>
+</ng-template>-->

@@ -2,7 +2,7 @@
 @import '~@angular/cdk/overlay-prebuilt.css'
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css")
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&display=swap')
-@import 'modals.sass'
+@import '../app/modals.sass'
 @import 'gallery-detail/gallery-detail.component.sass'
 @import 'gallery/gallery.component.sass'
 
@@ -16,11 +16,14 @@ html
   margin: 0
   height: auto
   min-height: 100%
+  background-color: $primary-background
 
 body 
   height: auto
   min-height: 100%
   margin: 0
+  margin-top:2vh
+  margin-bottom: 5vh
   color: #000000
   background-color: $primary-background
   text-decoration: none
@@ -39,17 +42,54 @@ a
     object-fit: cover
 
 .col-3
-  max-width: 24%
+  max-width: 23%
+  margin: 1%
 
-.subcategory
+.font-12-500
+  font-family: 'Barlow', sans-serif
+  font-size: 12px
+  font-weight: 500
+
+.font-14-400
+  font-family: 'Barlow', sans-serif
+  font-size: 14px
+  font-weight: 400
+
+.font-16-400
+  font-family: 'Barlow', sans-serif
+  font-size: 16px
+  font-weight: 400
+
+.font-16-500
+  font-family: 'Barlow', sans-serif
+  font-size: 16px
+  font-weight: 500
+
+.font-18-400
   font-family: 'Barlow', sans-serif
   font-size: 18px
   font-weight: 400
 
-.fotogalery
+.font-18-500
+  font-family: 'Barlow', sans-serif
+  font-size: 18px
+  font-weight: 500
+
+.font-24-500
+  font-family: 'Barlow', sans-serif
+  font-size: 24px
+  font-weight: 500
+
+.font-36-500
   font-family: 'Barlow', sans-serif
   font-size: 36px
   font-weight: 500
+
+
+.fontSubcategory
+  font-family: 'Barlow', sans-serif
+  font-size: 18px
+  font-weight: 400
 
 .shadow
   box-shadow: 0px 4px 24px #00000014
@@ -79,3 +119,23 @@ legend
 
 .border-none
   border: none
+
+.mat-dialog-container
+  width: 560px
+
+.marginFont
+  margin: 1%
+
+.modal-header
+  border: none
+
+.modal-footer
+  border: none
+
+.caption
+  position: absolute
+  top: 60%
+  left: 50%
+  transform: translate(-50%, -50%)
+  margin: 0
+  text-align: center

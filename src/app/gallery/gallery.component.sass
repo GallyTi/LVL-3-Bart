@@ -1,12 +1,15 @@
 $primary-background: #F9F9F9
 $image-gallery-bacground: #FFF
 $image-inside-caption: #00000052
+$button: #000
+
 
 .item
   margin: 0.5%
   padding: 0
   background: $image-gallery-bacground
   border-radius: 1%
+  cursor: pointer
 
 .item-img
   height: 25vh
@@ -18,16 +21,13 @@ $image-inside-caption: #00000052
   position: relative
   min-height: 67px
   height: 5vh
+  
+.caption-without-img
+  min-height: 67px
+  height: 5vh
 
-.caption
-  position: absolute
-  top: 65%
-  left: 50%
-  transform: translate(-50%, -50%)
-  margin: 0
-  font-family: 'Barlow', sans-serif
-  font-size: 16px
-  font-weight: 400
+.add-square
+  opacity: 32%
 
 .top-left 
   position: absolute

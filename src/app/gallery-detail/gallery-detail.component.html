@@ -1,16 +1,78 @@
 <body>
     <div class="container">
-        <p class="fotogalery">Fotogaléria</p >
-        <p class="subcategory"><a routerLink="/gallery" routerLinkActive="active"><i class="bi bi-arrow-left-short"></i>Príroda</a></p>
+        <p class="font-36-500 marginFont">Fotogaléria</p >
+        <p class="font-18-400 marginFont"><a routerLink="/gallery" routerLinkActive="active" >
+            <i class="bi bi-arrow-left-short"></i>Galleria</a></p>
     </div>
     <div class="container gallery-row">
-        <div class="col col-3 item-detail shadow" *ngFor="let img of imageData">
-            <a routerLink="/detail" routerLinkActive="router-link-active" >
-                <img [src]="img.url" [alt]="img.category" class="item-img-detail">
-            </a>
+        <div class="col col-3 item-detail shadow" *ngFor="let images of imagesList; let i=index">
+            <img [src]="getImageSrc(images.fullpath)" [alt]="images.name" class="item-img-detail" (click)="onPreviewImage(i)" loading="lazy">
         </div>
-        <div class="col col-3 modal-open d-flex flex-column justify-content-center align-items-center shadow" (click)="openDialog()">
-            <i class="bi bi-plus-square"></i> <h5>Pridať fotky</h5>
+        <div class="col col-3 item shadow modal-open d-flex flex-column justify-content-center align-items-center" (click)="openModal(fotografia)">
+            <i class="bi bi-plus-square add-square"></i> <p class="caption">Pridať Fotografie</p>
+        </div>
+        <!--<div class="col col-3 item shadow modal-open d-flex flex-column justify-content-center align-items-center" (click)="openModal()">
+            <i class="bi bi-plus-square add-square"></i> <p class="caption">Pridať Fotografie</p>
+        </div>-->
+    </div>
+
+
+    <div class="lightbox-container">
+        <div *ngIf="showMask" class="lightbox" @animation_leave>
+            <div *ngIf="previewImage" class="lightbox-center-items" [@animation]="{value:'visible'}" 
+            (@animation.done)="onAnimationEnd($event)">
+                <button *ngIf="previewImage" class="close-btn" (click)="onClosePreview()">
+                    <span class="fa-stack fa-2x">
+                        <i class="fas fa-circle fa-stack-2x circle-exit"></i>
+                        <i class="fas fa-times fa-stack-1x cross"></i>
+                    </span>
+                </button>
+                <button *ngIf="controls" class="btn-lightbox-carousel btn-next" (click)="nextImage()">
+                    <span class="fa-stack fa-2x">
+                        <i class="fas fa-circle fa-stack-2x circle-arrow"></i>
+                        <i class="fas fa-arrow-right fa-stack-1x arrow"></i>
+                    </span>
+                </button>
+                <button *ngIf="controls" class="btn-lightbox-carousel btn-prev" (click)="prevImage()">
+                    <span class="fa-stack fa-2x">
+                        <i class="fas fa-circle fa-stack-2x circle-arrow"></i>
+                        <i class="fas fa-arrow-left fa-stack-1x arrow"></i>
+                    </span>
+                </button>
+                <img [src]="getImageSrc(currentLightBoxImage.fullpath)" [alt]="currentLightBoxImage.name" class="lightbox-img">
+            </div>
         </div>
     </div>
 </body>
+
+
+
+
+<ng-template #fotografia>
+    <div class="modal-inside">
+        <div class="modal-header">
+        <h4 class="modal-title pull-left font-24-500">Pridať fotky</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body" >
+            <div class="input-field" for="file">
+                <input type="file" class="inputfile" placeholder="Vložte fotografiu" 
+                accept="image/*, .jpg, .png" multiple id="file" (change)="getFiles($event)">
+                <div class="center-modal-input" *ngIf="!selectedFiles">
+                    <i class="bi bi-image"></i>
+                    <p class="font-16-500">Sem presunte fotky</p>
+                    <p class="font-16-400" style="opacity: .56;">alebo</p>
+                    <button class="btn input-file-btn font-16-500">Vyberte súbor</button>
+                </div>
+                <div class="center-modal-input" *ngIf="selectedFiles">
+                    <p>Máte vybráte súbory</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn button font-16-500" (click)="uploadImages()" >Pridať</button>
+        </div>
+    </div>    
+</ng-template>

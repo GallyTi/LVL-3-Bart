@@ -1,10 +1,10 @@
-import { DialogCategoryComponent } from '../dialog-category/dialog-category.component';
-import { GALLERY } from '../gallery-photos/gallery';
-import { Routes } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { GalleryModalComponent } from './../modals/gallery-modal/gallery-modal.component';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { ApiService } from '../api/api.service';
-import { GETCategoryFiles } from './gallery';
+import { GETCategoryFiles, GETGallery } from '../model/gallery';
+import { environment } from 'src/environments/environment';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+
 
 @Component({
   selector: 'app-gallery',
@@ -12,27 +12,32 @@ import { GETCategoryFiles } from './gallery';
   styleUrls: ['../style.sass']
 })
 export class GalleryComponent implements OnInit {
+  
+  modalRef?: BsModalRef;
 
-  gallery = GALLERY 
+  categoriesList: GETCategoryFiles[] = [];
 
-  dialogRef!: MatDialogRef<any>;
-
-  public categoryList = <GETCategoryFiles[]>{};
-
-  constructor(private dialog: MatDialog,
-    private api: ApiService) { }
+  constructor(private api: ApiService, private modalService: BsModalService) {
+  }
   
   ngOnInit() {
-    this.api.category().subscribe( response =>{
-      console.log(response);
-      this.categoryList = response;
-    });
+    this.getCategory();
   }
 
-  //angular popup
-  openDialog(){
-    this.dialogRef = this.dialog.open(DialogCategoryComponent,{
-      width: '15%'
-  });
+  //ANGULAR GET DISPLAY ATRIBUTES OF GALLERY
+  getCategory(){
+    this.api.category().subscribe( (response:GETGallery) =>{
+      this.categoriesList = response.galleries;
+    })
+  }
+
+  //ANGULAR GET IMAGE OF GALLERY
+  getImageSrc(fullpath: string): string {
+    return `${environment.URL}/images/0x0/${fullpath}`;
+  }
+
+  //OPEN MODAL FOR SAVING NAME OF CATEGORY
+  openModal() {
+    this.modalRef = this.modalService.show(GalleryModalComponent);
   }
 }

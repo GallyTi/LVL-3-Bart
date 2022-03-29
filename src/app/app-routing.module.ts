@@ -5,10 +5,12 @@ import { GalleryDetailComponent } from './gallery-detail/gallery-detail.componen
 import {PagenotfoundComponent} from'./pagenotfound/pagenotfound.component'
 
 const routes: Routes = [
-  {path:'', redirectTo: '/gallery', pathMatch:'full'},
-  {path: 'gallery', component: GalleryComponent},
-  {path: 'detail', component: GalleryDetailComponent},
-  { path: '**', component: PagenotfoundComponent }
+  {path:'', loadChildren:()=>import('./modules/home/home-routing.module').then(x=>x.HomeRutingModule), pathMatch:'prefix'},
+  {path:'404', loadChildren:()=>import('./modules/page-not-found/page-not-found.module').then(x=>x.PageNotFoundModule)},
+  {path:'**', redirectTo:'404'}
+  // { path:'', redirectTo: '/gallery', pathMatch:'prefix'},
+  // { path: 'gallery', component: GalleryComponent, children:[{path: ':path', component: GalleryDetailComponent},]},
+  // { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({

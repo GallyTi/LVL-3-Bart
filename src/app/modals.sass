@@ -1,11 +1,42 @@
 $image-gallery-bacground: #FFF
+$button: #000
 
 .modal-open
   margin: 0.5%
   width: 100%
   min-height: 295px
-  height: 30vh
+  max-height: 32vh
   padding: 0
   border-radius: 1%
   background: $image-gallery-bacground
-  cursor: pointer
+
+.dialog .mat-dialog-container
+  border-radius: 16px !important
+  margin: auto !important
+
+.input-field
+  max-width: 100%
+  min-height: 258px
+  max-height: 50%
+  border: 1px dashed #ddd
+  border-radius: 4px
+
+.modal-inside
+  padding: 48px !important
+
+.modal-header
+  padding: 0 !important
+
+.modal-body
+  padding: 24px 0 24px 0 !important
+
+.modal-footer
+  padding: 0 !important
+  margin: auto
+
+.button
+  width:464px
+  height:64px
+  border-radius: 4px
+  background-color: $button
+  color: #fff

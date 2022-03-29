@@ -1,0 +1,29 @@
+    
+    
+    
+    <div class="modal-inside">
+        <div class="modal-header">
+        <h4 class="modal-title pull-left font-24-500">Pridať fotky</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body" >
+            <div class="input-field" for="file">
+                <input type="file" class="inputfile" placeholder="Vložte fotografiu" 
+                accept="image/*, .jpg, .png" multiple id="file" (change)="getFiles($event)">
+                <div class="center-modal-input" *ngIf="!selectedFiles">
+                    <i class="bi bi-image"></i>
+                    <p class="font-16-500">Sem presunte fotky</p>
+                    <p class="font-16-400" style="opacity: .56;">alebo</p>
+                    <button class="btn input-file-btn font-16-500">Vyberte súbor</button>
+                </div>
+                <div class="center-modal-input" *ngIf="selectedFiles">
+                    <p>Máte vybráte súbory</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn button font-16-500" (click)="uploadImages()" >Pridať</button>
+        </div>
+    </div>    
